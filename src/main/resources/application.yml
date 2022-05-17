@@ -1,0 +1,24 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: health_oms_backend
+  # datasource
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/itcast_health?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: 1234asdf
+#日志
+logging:
+  level:
+    #生产环境一般使用info级别，开发和测试环境使用debug级别
+    root: info
+# mybatis
+mybatis:
+  mapper-locations: classpath:com/itheima/health/mapper/*.xml # mapper映射文件路径
+  type-aliases-package: com.itheima.health.pojo
+#分页插件
+pagehelper:
+  # 指定使用的数据库类型
+  helperDialect: mysql
