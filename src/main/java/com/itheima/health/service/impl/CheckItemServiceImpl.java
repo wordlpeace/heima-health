@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  *
  * @author zhangmeng
@@ -66,5 +68,12 @@ public class CheckItemServiceImpl implements CheckItemService {
     public CheckItem findById(Integer id) {
         log.info("[检查项-根据ID查询]id:{}",id);
         return checkItemDao.selectById(id);
+    }
+
+    @Override
+    public List<CheckItem> findAll() {
+        log.info("[检查项-查询所有]~");
+        // 调用DAO查询
+        return checkItemDao.selectAll();
     }
 }

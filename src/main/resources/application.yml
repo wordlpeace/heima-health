@@ -22,3 +22,9 @@ mybatis:
 pagehelper:
   # 指定使用的数据库类型
   helperDialect: mysql
+#七牛配置
+qiniu:
+  urlPrefix: http://r2yj448yn.hb-bkt.clouddn.com/
+  accessKey: 5rvxPdSZurLxuUmrV6OHWuyymNVkerllzV1kEGnN
+  secretKey: rcIExX_gtxDV_hDqKVstJ1gsd2Gg5ZyLUwRO1f2Q
+  bucket: itcast-health-for-test
