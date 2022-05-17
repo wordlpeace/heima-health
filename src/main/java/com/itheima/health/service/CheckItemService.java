@@ -4,12 +4,13 @@ import com.itheima.health.entity.PageResult;
 import com.itheima.health.entity.QueryPageBean;
 import com.itheima.health.pojo.CheckItem;
 
+import java.util.List;
+
 /**
  * @author zhangmeng
  * @description 检查项Service
  * @date 2019/9/16
  **/
-
 public interface CheckItemService {
     /**
      * 添加
@@ -41,4 +42,10 @@ public interface CheckItemService {
      * @return
      */
     CheckItem findById(Integer id);
+
+    /**
+     * 查询所有
+     * @return
+     */
+    List<CheckItem> findAll();
 }

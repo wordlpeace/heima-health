@@ -6,9 +6,12 @@ spring:
   # datasource
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/itcast_health?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://localhost:3306/itcast_health_all?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
     username: root
     password: 1234asdf
+  redis:
+    host: 127.0.0.1 # redis的主机ip
+    port: 6379
 #日志
 logging:
   level:
@@ -22,3 +25,9 @@ mybatis:
 pagehelper:
   # 指定使用的数据库类型
   helperDialect: mysql
+#七牛配置
+qiniu:
+  urlPrefix: http://r2yj448yn.hb-bkt.clouddn.com/
+  accessKey: 5rvxPdSZurLxuUmrV6OHWuyymNVkerllzV1kEGnN
+  secretKey: rcIExX_gtxDV_hDqKVstJ1gsd2Gg5ZyLUwRO1f2Q
+  bucket: itcast-health-for-test

@@ -9,9 +9,11 @@ import com.itheima.health.exception.BusinessRuntimeException;
 import com.itheima.health.pojo.CheckItem;
 import com.itheima.health.service.CheckItemService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  *
@@ -19,12 +21,11 @@ import org.springframework.transaction.annotation.Transactional;
  * @description 检查组service实现类
  * @date 2019/9/16
  **/
-@Slf4j
 @Service
+@Slf4j
 public class CheckItemServiceImpl implements CheckItemService {
     @Autowired
     private CheckItemDao checkItemDao;
-
     @Transactional
     @Override
     public void add(CheckItem checkItem) {
@@ -66,5 +67,12 @@ public class CheckItemServiceImpl implements CheckItemService {
     public CheckItem findById(Integer id) {
         log.info("[检查项-根据ID查询]id:{}",id);
         return checkItemDao.selectById(id);
+    }
+
+    @Override
+    public List<CheckItem> findAll() {
+        log.info("[检查项-查询所有]~");
+        // 调用DAO查询
+        return checkItemDao.selectAll();
     }
 }

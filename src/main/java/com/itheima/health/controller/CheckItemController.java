@@ -8,7 +8,10 @@ import com.itheima.health.pojo.CheckItem;
 import com.itheima.health.service.CheckItemService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author zhangmeng
@@ -19,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/checkitem")
 @Slf4j
 public class CheckItemController {
-
     @Autowired
     private CheckItemService checkItemService;
 
@@ -31,6 +33,7 @@ public class CheckItemController {
      * @return
      */
     @PostMapping("/add")
+    @PreAuthorize("hasAuthority('CHECKITEM_ADD')")
     public Result add(@RequestBody CheckItem checkItem){
         log.info("[检查项-新增]data:{}",checkItem);
         checkItemService.add(checkItem);
@@ -44,6 +47,7 @@ public class CheckItemController {
      * @return
      */
     @GetMapping("findPage")
+    @PreAuthorize("hasAuthority('CHECKITEM_QUERY')")
     public Result findPage(QueryPageBean queryPageBean) {
         log.info("[检查项-分页查询]data:{}", queryPageBean);
         //rpc查询数据
@@ -59,6 +63,7 @@ public class CheckItemController {
      * @return
      */
     @RequestMapping("/delete")
+    @PreAuthorize("hasAuthority('CHECKITEM_DELETE')")
     public Result delete(Integer id){
         log.info("[检查项-根据id删除]id：{}",id);
         //RPC调用处理业务
@@ -73,8 +78,9 @@ public class CheckItemController {
      * @return
      */
     @RequestMapping("/edit")
+    @PreAuthorize("hasAuthority('CHECKITEM_EDIT')")
     public Result edit(@RequestBody CheckItem checkItem) {
-        log.info("[检查项-编辑]data:{}", checkItem);
+        log.info("[检查项-编辑]data:", checkItem);
         checkItemService.edit(checkItem);
         return new Result(true, MessageConst.EDIT_CHECKITEM_SUCCESS);
     }
@@ -86,9 +92,22 @@ public class CheckItemController {
      * @return
      */
     @RequestMapping("/findById")
+    @PreAuthorize("hasAuthority('CHECKITEM_QUERY')")
     public Result findById(Integer id) {
         log.info("[检查项-根据ID查询]id:{}", id);
         CheckItem checkItem = checkItemService.findById(id);
         return new Result(true,MessageConst.ACTION_SUCCESS,checkItem);
+    }
+
+    /**
+     * 查询所有检查项
+     * @return
+     */
+    @RequestMapping("/findAll")
+    @PreAuthorize("hasAuthority('CHECKITEM_QUERY')")
+    public Result findAll(){
+        log.info("[检查项-查询所有]~");
+        List<CheckItem> checkItems = checkItemService.findAll();
+        return new Result(true,MessageConst.QUERY_CHECKITEM_SUCCESS,checkItems);
     }
 }

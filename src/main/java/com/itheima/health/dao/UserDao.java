@@ -1,7 +1,6 @@
 package com.itheima.health.dao;
 
 import com.itheima.health.pojo.User;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -10,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
  * @description ：用户DAO
  * @version: 1.0
  */
-@Mapper
 public interface UserDao {
 
     /**
