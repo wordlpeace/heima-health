@@ -32,13 +32,6 @@ public interface CheckItemDao {
     void deleteById(@Param("id") Integer id);
 
     /**
-     * 根据检查项id统计关联的检查组数量
-     * @param checkItemId
-     * @return
-     */
-    Long countCheckGroupByCheckItemId(@Param("checkItemId") Integer checkItemId);
-
-    /**
      * 更新
      * @param checkItem
      */

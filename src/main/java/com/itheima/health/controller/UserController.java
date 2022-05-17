@@ -40,8 +40,7 @@ public class UserController {
         //rpc调用查询用户信息
         User user = userService.findByUsername(param.getUsername());
         //用户不存在或密码不匹配则登录失败
-        String password = DigestUtils.md5DigestAsHex(param.getPassword().getBytes());
-        if (null == user || !user.getPassword().equals(password)) {
+        if (null == user || !user.getPassword().equals(param.getPassword())) {
             log.info("[登录]失败，user:{}",param.getUsername());
 
             return new Result(false, MessageConst.LOGIN_FAIL);

@@ -46,11 +46,6 @@ public class CheckItemServiceImpl implements CheckItemService {
     @Override
     public void delete(int id) {
         log.info("[检查项-根据id删除]id：{}",id);
-        //校验是否可以删除
-        Long count = checkItemDao.countCheckGroupByCheckItemId(id);
-        if(count >0){
-            throw new BusinessRuntimeException("当前检查项有数据，不能删除");
-        }
         //实际删除操作
         checkItemDao.deleteById(id);
     }
