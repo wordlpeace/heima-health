@@ -2,7 +2,6 @@ package com.itheima.health.dao;
 
 import com.github.pagehelper.Page;
 import com.itheima.health.pojo.CheckItem;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -12,13 +11,12 @@ import java.util.List;
  * @description j检查组dao层
  * @date 2019/9/16
  **/
-@Mapper
 public interface CheckItemDao {
     /**
      * 插入
      * @param checkItem
      */
-    void insert(CheckItem checkItem);
+    void insert(CheckItem  checkItem);
 
     /**
      * 分页查询

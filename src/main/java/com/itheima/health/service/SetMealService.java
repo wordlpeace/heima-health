@@ -4,6 +4,11 @@ import com.itheima.health.entity.PageResult;
 import com.itheima.health.entity.QueryPageBean;
 import com.itheima.health.pojo.Setmeal;
 
+<<<<<<< HEAD
+=======
+import java.util.List;
+
+>>>>>>> team_work_finish
 /**
  * @author zhangmeng
  * @description 套餐SERVICE
@@ -24,4 +29,27 @@ public interface SetMealService {
      * @return
      */
     PageResult findPage(QueryPageBean queryPageBean);
+<<<<<<< HEAD
+=======
+
+    /**
+     * 统计图片的使用次数
+     * @param img
+     * @return
+     */
+    long countByImg(String img);
+
+    /**
+     * 查询所有
+     * @return
+     */
+    List<Setmeal> findAll();
+
+    /**
+     * 根据ID查询
+     * @param id
+     * @return
+     */
+    Setmeal findById(Integer id);
+>>>>>>> team_work_finish
 }

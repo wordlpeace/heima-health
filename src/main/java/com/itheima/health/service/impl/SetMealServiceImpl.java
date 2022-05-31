@@ -8,8 +8,15 @@ import com.itheima.health.entity.QueryPageBean;
 import com.itheima.health.pojo.Setmeal;
 import com.itheima.health.service.SetMealService;
 import lombok.extern.slf4j.Slf4j;
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+=======
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+>>>>>>> team_work_finish
 
 /**
  * @author zhangmeng
@@ -43,4 +50,24 @@ public class SetMealServiceImpl implements SetMealService {
         //封装返回值
         return new PageResult(page.getTotal(),page.getResult());
     }
+<<<<<<< HEAD
+=======
+
+    @Override
+    public long countByImg(String img) {
+        return setMealDao.countByImg(img);
+    }
+
+    @Override
+    public List<Setmeal> findAll() {
+        //调用DAO查询所有
+        return setMealDao.selectAll();
+    }
+
+    @Override
+    public Setmeal findById(Integer id) {
+        //调用DAO查询数据
+        return setMealDao.selectById(id);
+    }
+>>>>>>> team_work_finish
 }

@@ -9,8 +9,8 @@ import com.itheima.health.exception.BusinessRuntimeException;
 import com.itheima.health.pojo.CheckItem;
 import com.itheima.health.service.CheckItemService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -21,12 +21,11 @@ import java.util.List;
  * @description 检查组service实现类
  * @date 2019/9/16
  **/
-@Slf4j
 @Service
+@Slf4j
 public class CheckItemServiceImpl implements CheckItemService {
     @Autowired
     private CheckItemDao checkItemDao;
-
     @Transactional
     @Override
     public void add(CheckItem checkItem) {

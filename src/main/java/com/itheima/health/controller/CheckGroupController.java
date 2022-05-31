@@ -11,6 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
 import java.util.List;
 
 /**
@@ -104,7 +110,6 @@ public class CheckGroupController {
         return new Result(true, MessageConst.EDIT_CHECKGROUP_SUCCESS);
 
     }
-
     public static void main(String[] args) {
         System.out.println(DigestUtils.md5DigestAsHex("1234".getBytes()));
     }
@@ -114,7 +119,7 @@ public class CheckGroupController {
      *
      * @return
      */
-    @RequestMapping("/findAll")
+    @RequestMapping("findAll")
     public Result findAll() {
         //rpc调用查询数据
         List<CheckGroup> checkGroups = checkGroupService.findAll();

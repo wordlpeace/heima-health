@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itheima.health.dao.CheckGroupDao">
+<<<<<<< HEAD
+=======
+    <resultMap id="checkgroupResultMap" type="CheckGroup" >
+        <collection property="checkItems"
+                    column="checkgroup_id=id"
+                    select="com.itheima.health.dao.CheckItemDao.selectByCheckGroupId"/>
+    </resultMap>
+>>>>>>> team_work_finish
     <insert id="insert">
         <selectKey keyProperty="id" order="AFTER" resultType="integer">
             select LAST_INSERT_ID()
@@ -42,6 +50,7 @@
     <select id="selectCheckItemIdsByCheckGroupId" resultType="java.lang.Integer">
         select checkitem_id from t_checkgroup_checkitem where checkgroup_id=#{id}
     </select>
+<<<<<<< HEAD
     <select id="selectAll" resultType="com.itheima.health.pojo.CheckGroup">
         select * from t_checkgroup
     </select>
@@ -53,4 +62,12 @@
         delete from t_checkgroup
         where id = #{id}
     </delete>
+=======
+    <select id="selectAll"  resultType="com.itheima.health.pojo.CheckGroup">
+        select * from t_checkgroup
+    </select>
+    <select id="selectBySetMealId"  resultMap="checkgroupResultMap">
+        select * from t_checkgroup where id in (select checkgroup_id from t_setmeal_checkgroup  where setmeal_id=#{setmeal_id})
+    </select>
+>>>>>>> team_work_finish
 </mapper>

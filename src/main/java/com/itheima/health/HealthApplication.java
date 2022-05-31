@@ -3,6 +3,7 @@ package com.itheima.health;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @author ：zhang
@@ -12,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan("com.itheima.health.dao")
+@EnableScheduling
 public class HealthApplication {
 
     public static void main(String[] args) {

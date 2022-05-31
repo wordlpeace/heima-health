@@ -3,12 +3,18 @@ package com.itheima.health.controller;
 import com.itheima.health.common.MessageConst;
 import com.itheima.health.entity.PageResult;
 import com.itheima.health.entity.QueryPageBean;
+
+import com.itheima.health.common.RedisConst;
+
 import com.itheima.health.entity.Result;
 import com.itheima.health.pojo.Setmeal;
 import com.itheima.health.service.SetMealService;
 import com.itheima.health.util.QiniuUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.data.redis.core.RedisTemplate;
+
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,6 +36,10 @@ public class SetMealController {
     private QiniuUtils qiniuUtils;
 
     @Autowired
+    private RedisTemplate redisTemplate;
+
+
+    @Autowired
     private SetMealService setMealService;
     /**
      * 上传图片
@@ -42,7 +52,10 @@ public class SetMealController {
         //原始文件名
         String originalFileName = multipartFile.getOriginalFilename();
         //使用UUID构造不重复的文件名
-        String fileName = UUID.randomUUID().toString().replace("-", "") + "_" + originalFileName;
+        String fileName = System.currentTimeMillis()+"_"+UUID.randomUUID().toString().replace("-", "") + "_" + originalFileName;
+        // 将图片名加入redis中
+        redisTemplate.boundSetOps(RedisConst.SETMEAL_PIC_RESOURCES).add(fileName);
+
 
         //获取输入流并上传
         try (InputStream is = multipartFile.getInputStream()) {
@@ -72,6 +85,10 @@ public class SetMealController {
         }
         //RPC调用添加数据
         setMealService.add(setmeal,checkgroupIds);
+
+        // 从redis中清除记录的图片
+        redisTemplate.boundSetOps(RedisConst.SETMEAL_PIC_RESOURCES).remove(setmeal.getImg());
+
         return new Result(true,MessageConst.ADD_SETMEAL_SUCCESS);
     }
 

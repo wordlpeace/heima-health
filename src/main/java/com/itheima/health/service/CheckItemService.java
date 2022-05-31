@@ -11,7 +11,6 @@ import java.util.List;
  * @description 检查项Service
  * @date 2019/9/16
  **/
-
 public interface CheckItemService {
     /**
      * 添加

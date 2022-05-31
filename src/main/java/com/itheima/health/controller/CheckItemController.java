@@ -21,7 +21,6 @@ import java.util.List;
 @RequestMapping("/checkitem")
 @Slf4j
 public class CheckItemController {
-
     @Autowired
     private CheckItemService checkItemService;
 
@@ -76,7 +75,7 @@ public class CheckItemController {
      */
     @RequestMapping("/edit")
     public Result edit(@RequestBody CheckItem checkItem) {
-        log.info("[检查项-编辑]data:{}", checkItem);
+        log.info("[检查项-编辑]data:", checkItem);
         checkItemService.edit(checkItem);
         return new Result(true, MessageConst.EDIT_CHECKITEM_SUCCESS);
     }

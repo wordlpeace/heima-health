@@ -24,6 +24,7 @@
         <jsp-api.version>2.2</jsp-api.version>
         <servlet-api.version>2.5</servlet-api.version>
         <fastjson.version>1.2.47</fastjson.version>
+        <aliyun-java-sdk-core.version>4.5.3</aliyun-java-sdk-core.version>
     </properties>
     <dependencies>
         <dependency>
@@ -53,6 +54,10 @@
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>${druid-spring-boot-starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
         <!--fastJson-->
         <dependency>
@@ -94,13 +99,22 @@
             <artifactId>qiniu-java-sdk</artifactId>
             <version>7.2.25</version>
         </dependency>
-
+        <!--        阿里短信-->
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.4.2</version>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+            <version>${aliyun-java-sdk-core.version}</version>
         </dependency>
-
+        <!--spring boot集成quartz-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
     </dependencies>
     <build>
         <!--
