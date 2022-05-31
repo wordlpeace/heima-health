@@ -6,7 +6,6 @@ import com.itheima.health.exception.BusinessRuntimeException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageConversionException;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
@@ -46,22 +45,6 @@ public class MyExceptionHandler {
         return new Result(false, e.getMessage());
     }
 
-    /**
-     * 权限不足异常<br>
-     * 当用户权限不足时，SpringSecurity框架会抛出AccessDeniedException<br>
-     * 我们在异常处理类里进行统一处理
-     * @param e
-     * @return
-     * @throws Exception
-     */
-    @ExceptionHandler({
-            AccessDeniedException.class //  权限不足
-    })
-    public Result accessDeniedException(Exception e) throws Exception {
-        log.info("",e);
-        //提示用户权限不足
-        return new Result(false,"权限不足，请切换账号重试");
-    }
 
     /**
      * 希望交给spring处理的异常，所以继续上抛
