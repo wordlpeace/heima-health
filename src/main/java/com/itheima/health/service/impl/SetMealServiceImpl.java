@@ -1,5 +1,4 @@
 package com.itheima.health.service.impl;
-
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.itheima.health.dao.SetMealDao;
@@ -8,15 +7,11 @@ import com.itheima.health.entity.QueryPageBean;
 import com.itheima.health.pojo.Setmeal;
 import com.itheima.health.service.SetMealService;
 import lombok.extern.slf4j.Slf4j;
-<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-=======
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.List;
->>>>>>> team_work_finish
 
 /**
  * @author zhangmeng
@@ -38,7 +33,6 @@ public class SetMealServiceImpl implements SetMealService {
         for (Integer checkgroupId : checkgroupIds) {
             setMealDao.insertSetMealAndCheckGroup(setmeal.getId(),checkgroupId);
         }
-
     }
 
     @Override
@@ -50,8 +44,6 @@ public class SetMealServiceImpl implements SetMealService {
         //封装返回值
         return new PageResult(page.getTotal(),page.getResult());
     }
-<<<<<<< HEAD
-=======
 
     @Override
     public long countByImg(String img) {
@@ -69,5 +61,4 @@ public class SetMealServiceImpl implements SetMealService {
         //调用DAO查询数据
         return setMealDao.selectById(id);
     }
->>>>>>> team_work_finish
 }

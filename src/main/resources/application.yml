@@ -6,15 +6,13 @@ spring:
   # datasource
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/itcast_health_all?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://localhost:3306/itcast_health?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
     username: root
     password: root
-<<<<<<< HEAD
-=======
+
   redis:
     host: 127.0.0.1 # redis的主机ip
     port: 6379
->>>>>>> team_work_finish
 #日志
 logging:
   level:
@@ -42,14 +40,7 @@ pagehelper:
   helperDialect: mysql
 #七牛配置
 qiniu:
-<<<<<<< HEAD
-  urlPrefix: http://r2yj448yn.hb-bkt.clouddn.com/
-  accessKey: 5rvxPdSZurLxuUmrV6OHWuyymNVkerllzV1kEGnN
-  secretKey: rcIExX_gtxDV_hDqKVstJ1gsd2Gg5ZyLUwRO1f2Q
-  bucket: itcast-health-for-test
-=======
   urlPrefix: http://rc5k3g7g2.hn-bkt.clouddn.com/
   accessKey: fhuiPBXFTZIgJdtZGuMtCUJ3zSrT7k3AHmVNE4UA
   secretKey: zKKxCW_HjQmwtl4JI80nMT0Ve2V7VZDbqT4zt_tT
   bucket: heima-health-389
->>>>>>> team_work_finish

@@ -53,9 +53,8 @@ public interface CheckGroupService {
      * @return
      */
     List<CheckGroup> findAll();
-<<<<<<< HEAD
+
 
     public void delete(int id);
-=======
->>>>>>> team_work_finish
+
 }

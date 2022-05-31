@@ -1,11 +1,7 @@
 package com.itheima.health.dao;
-
 import com.github.pagehelper.Page;
 import com.itheima.health.pojo.CheckGroup;
-<<<<<<< HEAD
 import org.apache.ibatis.annotations.Mapper;
-=======
->>>>>>> team_work_finish
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -15,10 +11,8 @@ import java.util.List;
  * @description 检查组DAO
  * @date 2019/9/18
  **/
-<<<<<<< HEAD
 @Mapper
-=======
->>>>>>> team_work_finish
+
 public interface CheckGroupDao {
     /**
      * 添加
@@ -71,7 +65,7 @@ public interface CheckGroupDao {
      * @return
      */
     List<CheckGroup> selectAll();
-<<<<<<< HEAD
+
 
     Long countCheckGroupByCheckgroupId(@Param("checkGroupId") Integer checkGroupId);
     /**
@@ -80,6 +74,5 @@ public interface CheckGroupDao {
      */
     void deleteById(@Param("id") Integer id);
 
-=======
->>>>>>> team_work_finish
+
 }

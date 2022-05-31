@@ -5,20 +5,19 @@ import com.github.pagehelper.PageHelper;
 import com.itheima.health.dao.CheckGroupDao;
 import com.itheima.health.entity.PageResult;
 import com.itheima.health.entity.QueryPageBean;
-<<<<<<< HEAD
 import com.itheima.health.exception.BusinessRuntimeException;
 import com.itheima.health.pojo.CheckGroup;
 import com.itheima.health.service.CheckGroupService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-=======
+
 import com.itheima.health.pojo.CheckGroup;
 import com.itheima.health.service.CheckGroupService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> team_work_finish
+
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -86,7 +85,6 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         //调用DAO查询数据并返回
         return checkGroupDao.selectAll();
     }
-<<<<<<< HEAD
 
     @Transactional
     @Override
@@ -102,6 +100,4 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         //实际删除操作
         checkGroupDao.deleteById(id);
     }
-=======
->>>>>>> team_work_finish
 }

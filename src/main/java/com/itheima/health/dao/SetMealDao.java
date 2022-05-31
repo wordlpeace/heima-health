@@ -1,26 +1,20 @@
 package com.itheima.health.dao;
-
 import com.github.pagehelper.Page;
 import com.itheima.health.pojo.Setmeal;
-<<<<<<< HEAD
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-=======
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
->>>>>>> team_work_finish
 /**
  * @author zhangmeng
  * @description 套餐DAO
  * @date 2019/9/26
  **/
-<<<<<<< HEAD
+
 @Mapper
-=======
->>>>>>> team_work_finish
 public interface SetMealDao {
     /**
      * 插入
@@ -41,8 +35,7 @@ public interface SetMealDao {
      * @return
      */
     Page<Setmeal> selectByCondition(@Param("queryString") String queryString);
-<<<<<<< HEAD
-=======
+
 
     /**
      * 根据图片统计
@@ -63,5 +56,5 @@ public interface SetMealDao {
      * @return
      */
     Setmeal selectById(@Param("id") Integer id);
->>>>>>> team_work_finish
+
 }
