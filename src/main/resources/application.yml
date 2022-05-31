@@ -8,15 +8,27 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/itcast_health?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
     username: root
-    password: 1234asdf
+    password: root
 #日志
 logging:
   level:
     #生产环境一般使用info级别，开发和测试环境使用debug级别
     root: info
 # mybatis
-mybatis:
-  mapper-locations: classpath:com/itheima/health/mapper/*.xml # mapper映射文件路径
+#mybatis:
+#  mapper-locations: classpath:com/itheima/health/mapper/*.xml # mapper映射文件路径
+#  type-aliases-package: com.itheima.health.pojo
+
+mybatis-plus:
+  configuration:
+    #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射 address_book ---> AddressBook
+    map-underscore-to-camel-case: true
+    #日志输出
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+  mapper-locations: classpath:com/itheima/health/mapper/*.xml
   type-aliases-package: com.itheima.health.pojo
 #分页插件
 pagehelper:
