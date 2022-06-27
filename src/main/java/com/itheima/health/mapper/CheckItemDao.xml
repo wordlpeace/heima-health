@@ -34,4 +34,8 @@
     <select id="selectById" resultType="com.itheima.health.pojo.CheckItem" parameterType="integer">
         select  * from t_checkitem where id=#{id}
     </select>
+    <select id="findall" resultType="com.itheima.health.pojo.CheckItem">
+        select *
+        from t_checkitem;
+    </select>
 </mapper>

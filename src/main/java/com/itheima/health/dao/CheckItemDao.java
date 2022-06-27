@@ -5,6 +5,8 @@ import com.itheima.health.pojo.CheckItem;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @author zhangmeng
  * @description j检查组dao层
@@ -50,4 +52,6 @@ public interface CheckItemDao {
      * @return
      */
     CheckItem selectById(@Param("id") Integer id);
+
+    List<CheckItem> findall();
 }

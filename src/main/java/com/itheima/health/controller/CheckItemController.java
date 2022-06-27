@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author zhangmeng
  * @description 检查项Controller
@@ -90,5 +92,12 @@ public class CheckItemController {
         log.info("[检查项-根据ID查询]id:{}", id);
         CheckItem checkItem = checkItemService.findById(id);
         return new Result(true,MessageConst.ACTION_SUCCESS,checkItem);
+    }
+
+    @GetMapping("/findAll")
+    public Result finadd(){
+        List<CheckItem> findall = checkItemService.findall();
+        return new Result(true,MessageConst.ACTION_SUCCESS,findall);
+
     }
 }

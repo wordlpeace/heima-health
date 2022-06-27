@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.health.dao.checkgroupdao">
+
+    <insert id="insert" parameterType="checkGroup">
+insert into itcast_health.t_checkgroup(t_checkgroup.code, t_checkgroup.name, t_checkgroup.helpCode, t_checkgroup.sex, t_checkgroup.remark, t_checkgroup.attention)
+values (#{code},#{name},#{helpCode},#{sex},#{remark},#{attention})
+    </insert>
+    <insert id="InsertIntoRelationalTable">
+insert into     itcast_health.t_checkgroup_checkitem(t_checkgroup_checkitem.checkgroup_id, t_checkgroup_checkitem.checkitem_id)
+values (#{checkitemid},#{checkgroupid})
+    </insert>
+
+    <select id="selectByConditon" resultType="com.itheima.health.pojo.CheckGroup" parameterType="string">
+        select * from itcast_health.t_checkgroup
+        <if test="queryString != null and queryString.length > 0">
+        where code like concat('%',#{queryString},'%') or name like concat('%',#{queryString},'%') or helpCode like concat('%',#{queryString},'%')
+        </if>
+    </select>
+    <select id="findByName" resultType="com.itheima.health.pojo.CheckGroup">
+        select *
+        from t_checkgroup  where t_checkgroup.name=#{name};
+    </select>
+
+</mapper>
