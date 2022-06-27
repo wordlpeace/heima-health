@@ -62,5 +62,9 @@ public class checkgroupController {
      return new Result(true,MessageConst.ACTION_SUCCESS);
  }
 
-
+@RequestMapping("/deleteCheckGroupitemById")
+    public Result delete(Integer id){
+        checkgroupService.delete(id);
+        return new Result(true,MessageConst.ACTION_SUCCESS);
+}
 }

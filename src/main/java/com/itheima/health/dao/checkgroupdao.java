@@ -25,4 +25,10 @@ public interface checkgroupdao
     void edit(CheckGroup checkGroup);
 
     void deleteBycheckGroup(@Param("id") Integer id);
+
+    Integer countCheckItemIdByCheckGroup(@Param("id") Integer id);
+
+    void delete(@Param("id") Integer id);
+
+    void Deleterelationtable(@Param("id") Integer id);
 }

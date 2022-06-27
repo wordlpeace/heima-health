@@ -5,13 +5,15 @@ import com.github.pagehelper.PageHelper;
 import com.itheima.health.dao.checkgroupdao;
 import com.itheima.health.entity.PageResult;
 import com.itheima.health.entity.QueryPageBean;
+import com.itheima.health.exception.BusinessRuntimeException;
 import com.itheima.health.pojo.CheckGroup;
 import com.itheima.health.service.checkgroupService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Slf4j
 @Service
 public class checkgroupServiceImpl implements checkgroupService {
     @Autowired
@@ -63,5 +65,17 @@ public class checkgroupServiceImpl implements checkgroupService {
         for (String s : split) {
         checkgroupdao.InsertIntoRelationalTable(checkGroup.getId(),Integer.valueOf(s));
         }
+    }
+
+    @Override
+    public void delete(Integer id) {
+        log.info("检查组删除");
+        Integer integer = checkgroupdao.countCheckItemIdByCheckGroup(id);
+        if (integer!=0)
+        {
+            throw new BusinessRuntimeException("当前检查组被引用,不可删除");
+        }
+        checkgroupdao.delete(id);
+        checkgroupdao.Deleterelationtable(id);
     }
 }

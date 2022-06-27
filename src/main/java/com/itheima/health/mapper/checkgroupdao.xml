@@ -25,6 +25,12 @@ values (#{checkgroupid},#{checkitemid})
         from itcast_health.t_checkgroup_checkitem
         where t_checkgroup_checkitem.checkgroup_id=#{id};
     </delete>
+    <delete id="delete">
+        delete from itcast_health.t_checkgroup where t_checkgroup.id=#{id}
+    </delete>
+    <delete id="Deleterelationtable">
+        delete from itcast_health.t_setmeal_checkgroup where t_setmeal_checkgroup.checkgroup_id=#{id}
+    </delete>
 
     <select id="selectByConditon" resultType="com.itheima.health.pojo.CheckGroup" parameterType="string">
         select * from itcast_health.t_checkgroup
@@ -43,6 +49,9 @@ values (#{checkgroupid},#{checkitemid})
     <select id="findCheckItemIdsByCheckGroupId" resultType="java.lang.Integer">
         select t_checkgroup_checkitem.checkitem_id
         from t_checkgroup_checkitem where t_checkgroup_checkitem.checkgroup_id=#{id};
+    </select>
+    <select id="countCheckItemIdByCheckGroup" resultType="integer">
+        select count(1) from itcast_health.t_setmeal_checkgroup tsc where checkgroup_id=#{id};
     </select>
 
 </mapper>

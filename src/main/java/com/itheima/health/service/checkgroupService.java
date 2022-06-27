@@ -23,4 +23,6 @@ public interface checkgroupService {
     List<Integer> findCheckItemIdsByCheckGroupId(Integer id);
 
     void edit( String checkitemIds ,CheckGroup checkGroup);
+
+    void delete(Integer id);
 }
