@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @Slf4j
 @RequestMapping("/checkgroup")
@@ -36,6 +38,20 @@ public class checkgroupController {
         checkgroupService.InsertIntoRelationalTable(Integer.valueOf(s), id);
      }
      return new Result(true,MessageConst.ACTION_SUCCESS);
+ }
+
+ @RequestMapping("/findById")
+    public Result findBuyid(Integer id) {
+        log.info("检查组根据id查询");
+     CheckGroup checkGroup = checkgroupService.findbyId(id);
+     return new Result(true,MessageConst.ACTION_SUCCESS,checkGroup);
+ }
+
+ @RequestMapping("/findCheckItemIdsByCheckGroupId")
+    public Result findCheckItemIdsByCheckGroupId(Integer id) {
+        log.info("根据检查组id查询检查项");
+     List<Integer> checkItemIdsByCheckGroupId = checkgroupService.findCheckItemIdsByCheckGroupId(id);
+     return new Result(true,MessageConst.ACTION_SUCCESS,checkItemIdsByCheckGroupId);
  }
 
 

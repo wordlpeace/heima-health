@@ -21,5 +21,13 @@ values (#{checkitemid},#{checkgroupid})
         select *
         from t_checkgroup  where t_checkgroup.name=#{name};
     </select>
+    <select id="findById"  resultType="checkGroup">
+        select *
+        from t_checkgroup where t_checkgroup.id=#{id};
+    </select>
+    <select id="findCheckItemIdsByCheckGroupId" resultType="java.lang.Integer">
+        select t_checkgroup_checkitem.checkitem_id
+        from t_checkgroup_checkitem where t_checkgroup_checkitem.checkgroup_id=#{id};
+    </select>
 
 </mapper>

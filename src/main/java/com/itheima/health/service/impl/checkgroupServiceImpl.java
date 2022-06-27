@@ -11,6 +11,8 @@ import com.itheima.health.service.checkgroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class checkgroupServiceImpl implements checkgroupService {
     @Autowired
@@ -40,5 +42,17 @@ public class checkgroupServiceImpl implements checkgroupService {
     @Override
     public void InsertIntoRelationalTable(Integer checkitemIds ,Integer checkgroupid) {
         checkgroupdao.InsertIntoRelationalTable(checkitemIds,checkgroupid);
+    }
+
+    @Override
+    public CheckGroup findbyId(Integer id) {
+        CheckGroup byId = checkgroupdao.findById(id);
+        return byId;
+    }
+
+    @Override
+    public List<Integer> findCheckItemIdsByCheckGroupId(Integer id) {
+        List<Integer> checkItemIdsByCheckGroupId = checkgroupdao.findCheckItemIdsByCheckGroupId(id);
+        return checkItemIdsByCheckGroupId;
     }
 }
