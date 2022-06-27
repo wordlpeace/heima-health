@@ -21,4 +21,6 @@ public interface checkgroupService {
     CheckGroup findbyId(@Param("id") Integer id);
 
     List<Integer> findCheckItemIdsByCheckGroupId(Integer id);
+
+    void edit( String checkitemIds ,CheckGroup checkGroup);
 }

@@ -2,7 +2,6 @@ package com.itheima.health.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.itheima.health.dao.CheckItemDao;
 import com.itheima.health.dao.checkgroupdao;
 import com.itheima.health.entity.PageResult;
 import com.itheima.health.entity.QueryPageBean;
@@ -41,7 +40,7 @@ public class checkgroupServiceImpl implements checkgroupService {
 
     @Override
     public void InsertIntoRelationalTable(Integer checkitemIds ,Integer checkgroupid) {
-        checkgroupdao.InsertIntoRelationalTable(checkitemIds,checkgroupid);
+        checkgroupdao.InsertIntoRelationalTable(checkgroupid,checkitemIds);
     }
 
     @Override
@@ -54,5 +53,15 @@ public class checkgroupServiceImpl implements checkgroupService {
     public List<Integer> findCheckItemIdsByCheckGroupId(Integer id) {
         List<Integer> checkItemIdsByCheckGroupId = checkgroupdao.findCheckItemIdsByCheckGroupId(id);
         return checkItemIdsByCheckGroupId;
+    }
+
+    @Override
+    public void edit(String checkitemIds ,CheckGroup checkGroup) {
+        checkgroupdao.edit(checkGroup);
+        checkgroupdao.deleteBycheckGroup(checkGroup.getId());
+        String[] split = checkitemIds.split(",");
+        for (String s : split) {
+        checkgroupdao.InsertIntoRelationalTable(checkGroup.getId(),Integer.valueOf(s));
+        }
     }
 }

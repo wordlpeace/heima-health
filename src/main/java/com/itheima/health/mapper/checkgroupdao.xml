@@ -8,8 +8,23 @@ values (#{code},#{name},#{helpCode},#{sex},#{remark},#{attention})
     </insert>
     <insert id="InsertIntoRelationalTable">
 insert into     itcast_health.t_checkgroup_checkitem(t_checkgroup_checkitem.checkgroup_id, t_checkgroup_checkitem.checkitem_id)
-values (#{checkitemid},#{checkgroupid})
+values (#{checkgroupid},#{checkitemid})
     </insert>
+
+    <update id="edit" parameterType="checkGroup">
+        update itcast_health.t_checkgroup
+        set code=#{code},
+        name=#{name},
+        remark=#{remark},
+        sex=#{sex},
+        helpCode=#{helpCode}
+        where id=#{id}
+    </update>
+    <delete id="deleteBycheckGroup">
+        delete
+        from itcast_health.t_checkgroup_checkitem
+        where t_checkgroup_checkitem.checkgroup_id=#{id};
+    </delete>
 
     <select id="selectByConditon" resultType="com.itheima.health.pojo.CheckGroup" parameterType="string">
         select * from itcast_health.t_checkgroup

@@ -35,7 +35,7 @@ public class checkgroupController {
      Integer id = byName.getId();
      String[] split = checkitemIds.split(",");
      for (String s : split) {
-        checkgroupService.InsertIntoRelationalTable(Integer.valueOf(s), id);
+        checkgroupService.InsertIntoRelationalTable(id,Integer.valueOf(s));
      }
      return new Result(true,MessageConst.ACTION_SUCCESS);
  }
@@ -52,6 +52,14 @@ public class checkgroupController {
         log.info("根据检查组id查询检查项");
      List<Integer> checkItemIdsByCheckGroupId = checkgroupService.findCheckItemIdsByCheckGroupId(id);
      return new Result(true,MessageConst.ACTION_SUCCESS,checkItemIdsByCheckGroupId);
+ }
+
+ @RequestMapping("/edit")
+    public Result edit(String checkitemIds ,@RequestBody CheckGroup checkGroup )
+ {
+     log.info("检查组编辑");
+     checkgroupService.edit( checkitemIds,checkGroup);
+     return new Result(true,MessageConst.ACTION_SUCCESS);
  }
 
 
