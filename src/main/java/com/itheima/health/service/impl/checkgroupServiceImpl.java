@@ -7,6 +7,7 @@ import com.itheima.health.entity.PageResult;
 import com.itheima.health.entity.QueryPageBean;
 import com.itheima.health.exception.BusinessRuntimeException;
 import com.itheima.health.pojo.CheckGroup;
+import com.itheima.health.pojo.CheckItem;
 import com.itheima.health.service.checkgroupService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,5 +78,11 @@ public class checkgroupServiceImpl implements checkgroupService {
         }
         checkgroupdao.delete(id);
         checkgroupdao.Deleterelationtable(id);
+    }
+
+    @Override
+    public List<CheckGroup> findall() {
+        List<CheckGroup> all = checkgroupdao.findAll();
+        return all;
     }
 }

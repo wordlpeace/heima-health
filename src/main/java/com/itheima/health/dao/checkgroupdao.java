@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.itheima.health.pojo.CheckGroup;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -31,4 +32,7 @@ public interface checkgroupdao
     void delete(@Param("id") Integer id);
 
     void Deleterelationtable(@Param("id") Integer id);
+
+    @Select("select * from t_checkgroup;")
+    List<CheckGroup> findAll();
 }
