@@ -6,6 +6,7 @@ import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.Region;
+import com.qiniu.storage.RegionGroup;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
 import org.slf4j.Logger;
@@ -34,7 +35,7 @@ public class QiniuService {
     UploadManager uploadManager = new UploadManager(cfg);
 
     // 测试域名，只有30天有效期
-    private static String QINIU_IMAGE_DOMAIN = "re53whsvp.hn-bkt.clouddn.com/";
+    private static String QINIU_IMAGE_DOMAIN = "http://re53whsvp.hn-bkt.clouddn.com/";
 
     // 简单上传，使用默认策略，只需要设置上传的空间名就可以了
     public String getUpToken() {
