@@ -13,7 +13,7 @@ spring:
 logging:
   level:
     #生产环境一般使用info级别，开发和测试环境使用debug级别
-    root: info
+    root: debug
 # mybatis
 mybatis:
   mapper-locations: classpath:com/itheima/health/mapper/*.xml # mapper映射文件路径

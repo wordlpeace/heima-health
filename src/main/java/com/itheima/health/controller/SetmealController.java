@@ -1,9 +1,12 @@
 package com.itheima.health.controller;
 
 import com.itheima.health.common.MessageConst;
+import com.itheima.health.entity.PageResult;
+import com.itheima.health.entity.QueryPageBean;
 import com.itheima.health.entity.Result;
 import com.itheima.health.pojo.Setmeal;
 import com.itheima.health.service.SetmealService;
+import com.itheima.health.service.checkgroupService;
 import com.itheima.health.service.impl.QiniuService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +31,7 @@ public class SetmealController {
     @RequestMapping("/add")
     public Result add(String checkgroupIds ,@RequestBody Setmeal Setmeal){
         log.info("套餐添加");
-        setmealService.add(Setmeal);
+        setmealService.add(Setmeal,checkgroupIds);
         return new Result(true,MessageConst.ACTION_SUCCESS);
     }
     @RequestMapping("upload")
@@ -43,5 +46,12 @@ public class SetmealController {
             e.printStackTrace();
         }
         return new Result(false,MessageConst.PIC_UPLOAD_FAIL);
+    }
+
+    @RequestMapping("/findPage")
+    public Result page(QueryPageBean queryPageBean){
+        log.info("检查组,分页查询{}",queryPageBean);
+        PageResult pageResult = setmealService.pageQuery(queryPageBean);
+        return new Result(true, MessageConst.ACTION_SUCCESS,pageResult);
     }
 }
